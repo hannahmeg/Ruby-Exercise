@@ -2,7 +2,7 @@
 # concatenates them, and prints the full name.
 
 def get_full_name(first_name, last_name)
-  "#{first_name} #{last_name}"
+  print "#{first_name} #{last_name}"
 end
 
-p get_full_name("Hannah Meg","Arcega")
+get_full_name("Hannah Meg","Arcega")

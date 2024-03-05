@@ -10,8 +10,8 @@ def calculate(a, b)
   product = a*b
   quot = a/b
 
-  "The first number is #{a} and the second number is #{b}. The sum is #{sum}, difference is #{diff}, product is #{product}, and the quotient is #{quot}."
+  print ("The first number is #{a} and the second number is #{b}. The sum is #{sum}, difference is #{diff}, product is #{product}, and the quotient is #{quot}.")
 end
 
-p calculate(10,5)
+calculate(10,5)
 

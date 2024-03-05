@@ -9,7 +9,7 @@ def calculate_age(birth_year)
   current_year = 2024
   age = current_year - birth_year
 
-  "Birth year is #{birth_year} and age is #{age}."
+  print ("Birth year is #{birth_year} and age is #{age}.")
 end
 
-p calculate_age(2000)
+calculate_age(2000)
