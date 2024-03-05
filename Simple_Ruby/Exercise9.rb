@@ -10,4 +10,4 @@ def determine_leap_year(year)
   end
 end
 
-p determine_leap_year(2015)
+determine_leap_year(2015)

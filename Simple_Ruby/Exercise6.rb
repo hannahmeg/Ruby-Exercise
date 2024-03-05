@@ -9,5 +9,3 @@ def odd_or_even(x)
     print ("#{x} is an odd number.\n")
   end
 end
-
-p odd_or_even(2)

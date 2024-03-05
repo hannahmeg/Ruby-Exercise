@@ -3,7 +3,7 @@
 
 def calculate_area(length, width)
   area = length * width
-  print ("The area of the rectangle is #{area}.\n")
+  "The area of the rectangle is #{area}."
 end
 
 p calculate_area(9, 5)

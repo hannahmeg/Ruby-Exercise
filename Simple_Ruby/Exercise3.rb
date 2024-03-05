@@ -6,4 +6,4 @@ def add(a, b)
   print ("The sum is #{sum}.\n")
 end
 
-p add(10,5)
+add(10,5)

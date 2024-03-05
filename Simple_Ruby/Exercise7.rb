@@ -6,4 +6,4 @@ def make_fahrenheit(celcius)
   print ("The fahrenheit of #{celcius}°C is #{fahrenheit}°F.\n")
 end
 
-p make_fahrenheit(10)
+make_fahrenheit(10)
