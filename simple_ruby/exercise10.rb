@@ -1,6 +1,5 @@
-# Write a Ruby program that takes two variables as input,
-# swaps their values, and prints the new values.
 
+#members = {name: 'meg', color: 'blue'}
 puts "Input 1st number:"
 var1 = gets.chomp
 puts "Input 2nd number:"
@@ -10,4 +9,4 @@ temp = var1
 var1 = var2
 var2 = temp
 
-print ("The first variable is now #{var1} and the second variable is now #{var2}.")
+p ("The first variable is now #{var1} and the second variable is now #{var2}.")
