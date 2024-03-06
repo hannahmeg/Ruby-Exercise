@@ -3,7 +3,7 @@
 
 puts "Input 1st number:"
 var1 = gets.chomp
-puts "Input 2nd number"
+puts "Input 2nd number:"
 var2 = gets.chomp
 
 temp = var1
