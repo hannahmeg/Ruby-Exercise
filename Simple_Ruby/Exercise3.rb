@@ -1,9 +1,8 @@
 # Write a Ruby program that takes two numbers as user input,
 # calculates their sum, and prints the result.
 
-def add(a, b)
+a = gets.chomp.to_i
+b= gets.chomp.to_i
+
   sum = a+b
   print ("The sum is #{sum}.\n")
-end
-
-add(10,5)
