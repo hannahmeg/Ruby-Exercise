@@ -1,9 +1,10 @@
 # Write a Ruby program that takes the length and width of a rectangle as variables,
 # calculates the area, and prints the result.
 
-def calculate_area(length, width)
-  area = length * width
-  print ("The area of the rectangle is #{area}.")
-end
+puts "What is the length?"
+length = gets.chomp.to_i
+puts "What is the width?"
+width = gets.chomp.to_i
 
-calculate_area(9, 5)
+area = length * width
+print ("The area of the rectangle is #{area}.")

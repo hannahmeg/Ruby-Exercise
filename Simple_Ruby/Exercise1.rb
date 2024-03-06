@@ -4,12 +4,10 @@
 # Calculate the person's age (assuming the current year is 2024).
 # Print a message that includes both the birth year and the calculated age
 
+puts "What is your birth year?"
+birth_year = gets.chomp.to_i
 
-def calculate_age(birth_year)
-  current_year = 2024
-  age = current_year - birth_year
+current_year = 2024
+age = current_year - birth_year
 
-  print ("Birth year is #{birth_year} and age is #{age}.")
-end
-
-calculate_age(2000)
+print ("Your birth year is #{birth_year} and your age is #{age}.")

@@ -2,7 +2,7 @@
 # converts it to Fahrenheit, and prints the result.
 
 puts "Input celcius:"
-celcius = gets.chomp.to_i
+celcius = gets.chomp.to_f
 fahrenheit = (celcius * 9/5) + 32
 print ("The fahrenheit of #{celcius}°C is #{fahrenheit}°F.\n")
 
