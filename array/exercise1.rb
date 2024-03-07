@@ -2,7 +2,16 @@
 # For each score, classify and store the grade as "A" if the score is 90 or above,
 # "B" if it's between 80 and 89, "C" for scores between 70 and 79, and "D" for scores below 70.
 
-def classify_score(scores = [])
+
+def classify_score
+
+  puts "Input grades, press enter if none follows:"
+  scores = []
+  while true
+    input = gets.chomp
+    break if input.empty?
+    scores << input.to_i
+  end
 
   scores.map do |score|
     if score >= 90
@@ -17,5 +26,37 @@ def classify_score(scores = [])
   end
 end
 
+p classify_score
 
-p classify_score([90, 91, 71, 60])
+
+
+
+# ------
+
+# scores = []
+# puts "Input grades separated by comma:"
+# input = gets.chomp.to_i
+# scores.push (input)
+#
+# grade_a = []
+# grade_b = []
+# grade_c = []
+# grade_d = []
+#
+#   scores.map do |score|
+#     if score >= 90
+#       grade_a << score
+#     elsif score >= 80 && score <= 89
+#       grade_b << score
+#     elsif score >= 70 && score <= 79
+#       grade_c << score
+#     elsif score < 70
+#       grade_d << score
+#     end
+#   end
+#
+# p "Grade A: #{grade_a}"
+# p "Grade B: #{grade_b}"
+# p "Grade C: #{grade_c}"
+# p "Grade D: #{grade_d}"
+#
