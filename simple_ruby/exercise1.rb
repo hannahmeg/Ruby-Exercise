@@ -15,13 +15,13 @@ print ("Your birth year is #{birth_year} and your age is #{age}.")
 
 
 # # method code
-# def calculate_age(birth_year)
+# def calculate_age
+#   puts "What is your birth year?"
+#   birth_year = gets.chomp.to_i
 #   current_year = 2024
 #   age = current_year - birth_year
 #
 #   print "Your birth year is #{birth_year} and your age is #{age}."
 # end
 #
-# puts "What is your birth year?"
-# birth_year = gets.chomp.to_i
-# calculate_age(birth_year)
+# calculate_age
