@@ -9,7 +9,7 @@ def sort_by_age
     input = gets.chomp
     break if input.empty?
     ages << input.to_i
-  end
+  ende
 
   child = []
   teenager = []
