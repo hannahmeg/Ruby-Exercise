@@ -21,20 +21,17 @@
   weather_conditions = [{day: "Sunday", condition: nil}, {day: "Monday", condition: nil},
   {day: "Tuesday", condition: nil},{day: "Wednesday", condition: nil},{day: "Thursday", condition: nil},
   {day: "Friday", condition: nil},{day: "Saturday", condition: nil}]
-#
-# #   # puts "What is the weather condition on Sunday?"
-# #   # sunday = gets.chomp
-# #   # weather_conditions << sunday
-#
+
+
 weather_conditions.each do |k,v|
-  puts "How is the weather this #{k}?:"
+  puts "How is the weather this #{k[:day]}?:"
   input = gets.chomp
   if input.match(/sun/)
     weather_conditions[0][:condition] = "Sunny"
   elsif input.match(/rain/)
     weather_conditions[0][:condition] = "Rainy"
-  elsif
-  weather_conditions[0][:condition] = "Cloudy"
+  # elsif
+  # weather_conditions[0][:condition] = "Cloudy"
 
   end
   end
