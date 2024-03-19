@@ -124,8 +124,7 @@ def print_plate_number
 end
 
 # 3. Return most common color
-colors_count = cars.group_by { |car| car.color }.transform_values(&:count)
-most_common_color = colors_count.max_by { |color, count| count }.first
+most_common_color = cars.max_by { |car| cars.count(car) }.color
 
 puts "The most common color is #{most_common_color}"
 
@@ -144,6 +143,12 @@ p cars[1].speed
 cars[0].randomize_color
 puts cars[0].color
 
+
+
+
+
+
+# Sratch codes only - don't mind
 #
 # Cars.each do |car|
 #   current_color = ''
