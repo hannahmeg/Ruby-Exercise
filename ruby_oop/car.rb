@@ -1,6 +1,5 @@
 # new attributes class type class 1 class 2 class 3, plate_number
-# Create an array on instance of car (atleast 10 or )
-#
+# Create an array on instance of car (at least 10)
 # 1. filter the array of car class and return cars with class type 1
 # 2. Print plate_number
 # 3. Return most common color
@@ -105,7 +104,6 @@ cars[9].serial_number = 'X132'
 cars[9].plate_number = 'ABC 009'
 
 # 1. filter the array of car class and return cars with class type 1
-#
 puts "List of Class 1 Cars:"
 cars.each do |car|
   if car.class_type == 'Class 1'
@@ -164,8 +162,9 @@ puts "-------------------------------"
 cars[0].randomize_color
 puts "Randomized Color: #{cars[0].color.capitalize}"
 
-# Sratch codes only - don't mind
-#
+
+# sratch codes only (don't mind codes below)
+
 # Cars.each do |car|
 #   current_color = ''
 #   current_count = 0
@@ -186,7 +185,6 @@ puts "Randomized Color: #{cars[0].color.capitalize}"
 #   else
 #     current_count = current_count
 #   end
-#
 # end
 
 
