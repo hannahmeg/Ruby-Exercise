@@ -8,8 +8,6 @@
 # 5. create a script that will change the speed of the class (make it random)
 # 6. Modify the color of each car randomly (loop)
 
-
-
 class Car
   attr_accessor :color
   attr_reader :model, :year, :class_type, :manufacturer
@@ -58,7 +56,7 @@ class Car
 
   def randomize_color
     colors = %w[black blue red yellow pink white gray]
-    @color = colors[rand(colors.size-1)]
+    @color = colors[rand(colors.size - 1)]
   end
 end
 
@@ -106,23 +104,21 @@ cars[8].plate_number = 'ABC 008'
 cars[9].serial_number = 'X132'
 cars[9].plate_number = 'ABC 009'
 
-
 # 1. filter the array of car class and return cars with class type 1
 #
 puts "List of Class 1 Cars:"
 cars.each do |car|
   if car.class_type == 'Class 1'
-  puts "#{car.manufacturer} #{car.model}"
+    puts "#{car.manufacturer} #{car.model}"
   end
-  end
-
+end
 
 # 2. Print plate_number
 puts "-------------------------------"
 puts "List of Plate Numbers:"
 cars.each do |car|
-    puts "#{car.model} => #{car.details[:plate_number]}"
-  end
+  puts "#{car.model} => #{car.details[:plate_number]}"
+end
 
 # 3. Return most common color
 puts "-------------------------------"
@@ -150,7 +146,6 @@ puts "Most Common Color: #{most_common_color.capitalize}"
 #   end
 # end
 
-
 # 4. modify the decrease speed to avoid negative number
 puts "-------------------------------"
 cars[0].increase_speed
@@ -168,11 +163,6 @@ puts "Randomized Speed: #{cars[1].speed}"
 puts "-------------------------------"
 cars[0].randomize_color
 puts "Randomized Color: #{cars[0].color.capitalize}"
-
-
-
-
-
 
 # Sratch codes only - don't mind
 #
