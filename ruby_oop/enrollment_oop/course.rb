@@ -12,7 +12,7 @@ end
 courses = []
 input_count = 0
 puts "Input Course ID and Course Name separated by comma. Press enter after each entry and repeat 10 times."
-while input_count != 2
+while input_count != 10
 input = gets.chomp
 courses << input.split(", ")
 input_count += 1
