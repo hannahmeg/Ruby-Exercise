@@ -1,4 +1,4 @@
-# new attributes car_type class 1 class 2 class 3, plate_number
+# new attributes class type class 1 class 2 class 3, plate_number
 # Create an array on instance of car (atleast 10 or )
 #
 # 1. filter the array of car class and return cars with class type 1
@@ -12,16 +12,16 @@
 
 class Car
   attr_accessor :color
-  attr_reader :model, :year, :car_type, :manufacturer
+  attr_reader :model, :year, :class_type, :manufacturer
   attr_writer :serial_number, :plate_number
 
-  def initialize(color, manufacturer, model, year, car_type)
+  def initialize(color, manufacturer, model, year, class_type)
     @speed = 0
     @color = color
     @manufacturer = manufacturer
     @model = model
     @year = year
-    @car_type = car_type
+    @class_type = class_type
   end
 
   def details
@@ -30,7 +30,7 @@ class Car
       manufacturer: manufacturer,
       model: model,
       year: year,
-      car_type: car_type,
+      class_type: class_type,
       serial_number: @serial_number,
       plate_number: @plate_number
     }
@@ -108,25 +108,43 @@ cars[9].plate_number = 'ABC 009'
 
 
 # 1. filter the array of car class and return cars with class type 1
-def filter_class_one
-  puts "Class 1 cars are:"
-  cars.each do |car|
-  if car.details[:car_type] == 'Class 1'
-  puts "#{car.details[:manufacturer]} #{car.details[:model]}" end
+#
+puts "Class 1 cars are:"
+cars.each do |car|
+  if car.class_type == 'Class 1'
+  puts "#{car.manufacturer} #{car.model}" end
   end
-end
+
 
 # 2. Print plate_number
-def print_plate_number
-  cars.each do |car|
-    puts "#{car.details[:model]} => #{car.details[:plate_number]}"
+cars.each do |car|
+    puts "#{car.model} => #{car.details[:plate_number]}"
   end
-end
 
 # 3. Return most common color
 most_common_color = cars.max_by { |car| cars.count(car) }.color
 
 puts "The most common color is #{most_common_color}"
+
+# color_counter = {}
+# cars.each do |car|
+#   if color_counter[car.color]
+#     color_counter += 1
+#   else
+#     color_counter = 0
+#     color_counter += 1
+#   end
+# end
+
+# max_count = 0
+# common_color = ''
+# color_counter.each do |color, count|
+#   if max_count < count
+#      common_color = color
+#      max_count = count
+#   end
+# end
+
 
 # 4. modify the decrease speed to avoid negative number
 cars[0].increase_speed
