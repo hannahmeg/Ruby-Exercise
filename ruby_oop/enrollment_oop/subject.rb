@@ -21,7 +21,9 @@ end
 i = 0
 while i < subjects.size
   subjects.each do |subject|
-    Course.new(subject[0], subject[1])
+    Subject.new(subject[0], subject[1])
     i += 1
   end
 end
+
+p ObjectSpace.each_object(Subject).to_a
