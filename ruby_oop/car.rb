@@ -109,23 +109,28 @@ cars[9].plate_number = 'ABC 009'
 
 # 1. filter the array of car class and return cars with class type 1
 #
-puts "Class 1 cars are:"
+puts "List of Class 1 Cars:"
 cars.each do |car|
   if car.class_type == 'Class 1'
-  puts "#{car.manufacturer} #{car.model}" end
+  puts "#{car.manufacturer} #{car.model}"
+  end
   end
 
 
 # 2. Print plate_number
+puts "-------------------------------"
+puts "List of Plate Numbers:"
 cars.each do |car|
     puts "#{car.model} => #{car.details[:plate_number]}"
   end
 
 # 3. Return most common color
+puts "-------------------------------"
 most_common_color = cars.max_by { |car| cars.count(car) }.color
 
-puts "The most common color is #{most_common_color}"
+puts "Most Common Color: #{most_common_color.capitalize}"
 
+# other solution from Coach Bernard:
 # color_counter = {}
 # cars.each do |car|
 #   if color_counter[car.color]
@@ -147,19 +152,22 @@ puts "The most common color is #{most_common_color}"
 
 
 # 4. modify the decrease speed to avoid negative number
+puts "-------------------------------"
 cars[0].increase_speed
 cars[0].decrease_speed
 cars[0].decrease_speed
 cars[0].decrease_speed
-p cars[0].speed
+puts "Speed: #{cars[0].speed}"
 
 # 5. create a script that will change the speed of the class (make it random)
+puts "-------------------------------"
 cars[1].randomize_speed
-p cars[1].speed
+puts "Randomized Speed: #{cars[1].speed}"
 
 # 6. Modify the color of each car randomly (loop)
+puts "-------------------------------"
 cars[0].randomize_color
-puts cars[0].color
+puts "Randomized Color: #{cars[0].color.capitalize}"
 
 
 
