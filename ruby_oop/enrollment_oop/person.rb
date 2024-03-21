@@ -7,3 +7,4 @@ class Person
     @birth_date = birth_date
   end
 end
+

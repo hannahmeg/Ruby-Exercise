@@ -13,21 +13,28 @@ class Student < Person
   def self.list
     puts "List of Students:"
     @@student_records.each do |student|
-      puts "#{student.id} - #{student.name}"
+      puts "---------------------------"
+      puts "Student Name: #{student.name}"
+      puts "Student ID: #{student.id}"
+      puts "Course ID: #{student.course_id}"
     end
   end
 
+  def self.student_records
+    @@student_records
+  end
+
   def self.generate_samples
-    student1 = Student.new('001', 'Meg', '10/12/2000', '101010', 'Mother')
-    student2 = Student.new('002', 'Law', '05/30/2002', '202020', 'Mother')
-    student3 = Student.new('003', 'Paul', '12/13/2002', '303030', 'Father')
-    student4 = Student.new('004', 'Alice', '02/28/2001', '404040', 'Father')
-    student5 = Student.new('005', 'Bob', '07/15/2003', '505050', 'Guardian')
-    student6 = Student.new('006', 'Eve', '11/08/2000', '606060', 'Guardian')
-    student7 = Student.new('007', 'Max', '03/25/2002', '707070', 'Mother')
-    student8 = Student.new('008', 'Sam', '09/19/2001', '808080', 'Father')
-    student9 = Student.new('009', 'Liz', '04/14/2003', '909090', 'Mother')
-    student10 = Student.new('010', 'Tim', '08/05/2002', '101010', 'Guardian')
+    student1 = Student.new('001', 'Meg', '10/12/2000', '002', 'Mother')
+    student2 = Student.new('002', 'Law', '05/30/2002', '008', 'Mother')
+    student3 = Student.new('003', 'Paul', '12/13/2002', '006', 'Father')
+    student4 = Student.new('004', 'Alice', '02/28/2001', '005', 'Father')
+    student5 = Student.new('005', 'Bob', '07/15/2003', '008', 'Guardian')
+    student6 = Student.new('006', 'Eve', '11/08/2000', '010', 'Guardian')
+    student7 = Student.new('007', 'Max', '03/25/2002', '001', 'Mother')
+    student8 = Student.new('008', 'Sam', '09/19/2001', '003', 'Father')
+    student9 = Student.new('009', 'Liz', '04/14/2003', '004', 'Mother')
+    student10 = Student.new('010', 'Tim', '08/05/2002', '006', 'Guardian')
     @@student_records << student1
     @@student_records << student2
     @@student_records << student3

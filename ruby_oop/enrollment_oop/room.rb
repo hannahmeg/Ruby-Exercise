@@ -77,5 +77,5 @@ while i < rooms.size
 end
 
 
-
-p ObjectSpace.each_object(Room).to_a
+#
+# p ObjectSpace.each_object(Room).to_a
