@@ -16,16 +16,16 @@ class Subject
 
   def self.generate_samples
     subjects = [
-      { id: '1', name: 'Mathematics' },
-      { id: '2', name: 'English' },
-      { id: '3', name: 'History' },
-      { id: '4', name: 'Biology' },
-      { id: '5', name: 'Chemistry' },
-      { id: '6', name: 'Physics' },
-      { id: '7', name: 'Computer Science' },
-      { id: '8', name: 'Art' },
-      { id: '9', name: 'Music' },
-      { id: '10', name: 'Physical Education' }
+      { id: '001', name: 'Mathematics' },
+      { id: '002', name: 'English' },
+      { id: '003', name: 'History' },
+      { id: '004', name: 'Biology' },
+      { id: '005', name: 'Chemistry' },
+      { id: '006', name: 'Physics' },
+      { id: '007', name: 'Computer Science' },
+      { id: '008', name: 'Art' },
+      { id: '009', name: 'Music' },
+      { id: '010', name: 'Physical Education' }
     ]
     subjects.each do |element|
       subject = Subject.new(element[:id], element[:name])
