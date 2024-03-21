@@ -14,6 +14,46 @@
 
 require_relative 'course'
 require_relative 'subject'
-require_relative 'student'
-require_relative 'teacher'
-require_relative 'room'
+
+Course.generate_samples
+Course.list
+
+Subject.generate_samples
+Subject.list
+
+
+# ENROLLSTUDENT:
+#
+#   %w[
+#   add_student
+#   show_student
+#   add_teacher
+#   add_course
+#   add_room
+#   add_subject
+#   enroll_student
+# ]
+#
+# []
+
+# studnet_id
+# name
+# birthdate
+# course_id
+#
+# student details
+# do you want to save? (y/n)?
+#
+# @@studnet_records <<
+
+# class SubjectStudents
+#   attr_accessor :subject_id, :student_id, :teacher_id, :day
+#
+#   def initialize(subject_id, student_id, teacher_id, day))
+#   @subject_id = subject_id
+#   @student_id = student_id
+#   @teacher_id = teacher_id
+#   @day = day #date today
+#   end
+# end
+
