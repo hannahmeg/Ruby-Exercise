@@ -38,9 +38,13 @@ Teacher.generate_samples
 # puts Time.now.strftime("%A %d/%m/%Y %H:%M")
 # #=> "14/09/2011 14:09"
 
+
+# Intro
 puts "Welcome to the Enrollment Portal. Press any key to continue."
 gets.chomp
 
+
+# Student Select
 Student.list
 puts "---------------------------"
 puts "Select student to enroll. Input student ID below."
@@ -55,9 +59,9 @@ else
   puts "Please select a valid student ID"
 end
 
-------
-
 gets.chomp
+
+# Subject Select
 Subject.list
 puts "Select a subject to enroll in. Input subject ID below."
 
@@ -73,6 +77,8 @@ else
 end
 
 gets.chomp
+
+# Teacher Select
 Teacher.list
 puts "Select a Teacher. Input teacher ID below."
 
@@ -87,7 +93,7 @@ else
   puts "Please select a valid teacher ID"
 end
 
-
+# Review details
 day = Date.today.strftime("%A %Y-%m-%d")
 puts "---------------------------"
 puts "Student ID: #{student_input}"
@@ -95,7 +101,7 @@ puts "Subject: #{subject_input}"
 puts "Teacher: #{teacher_input}"
 puts "Date: #{day}"
 
-
+# Save
 puts "Would you like to save? (y/n)"
 input = gets.chomp
 if input == 'y' || 'yes'
@@ -106,8 +112,13 @@ else
   puts "Enrollment unsuccessful. Please try again."
 end
 
-
+# Check data
 p SubjectStudents.list
+
+
+
+
+
 
 # SubjectStudents.list.each do |subject_students|
 #   puts "---------------------------"
