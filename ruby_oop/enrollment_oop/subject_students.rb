@@ -1,4 +1,3 @@
-# require_relative 'index'
 class SubjectStudents
   attr_accessor :subject_id, :student_id, :teacher_id, :day
   @@subject_students = []
@@ -18,8 +17,4 @@ class SubjectStudents
   end
 end
 
-# student, teacher, subject
-# select the student to enroll
-# select teacher
-# select subject
 

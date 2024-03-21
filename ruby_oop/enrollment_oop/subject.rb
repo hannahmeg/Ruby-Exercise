@@ -7,15 +7,8 @@ class Subject
     @name = name
   end
 
-  def self.subject_records
-    @@subject_records
-  end
-
   def self.list
-    puts "List of Subjects:"
-    @@subject_records.each do |subject|
-      puts "#{subject.id} - #{subject.name}"
-    end
+    @@subject_records
   end
 
   def self.generate_samples

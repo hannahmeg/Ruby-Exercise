@@ -11,16 +11,6 @@ class Student < Person
   end
 
   def self.list
-    puts "List of Students:"
-    @@student_records.each do |student|
-      puts "---------------------------"
-      puts "Student Name: #{student.name}"
-      puts "Student ID: #{student.id}"
-      puts "Course ID: #{student.course_id}"
-    end
-  end
-
-  def self.student_records
     @@student_records
   end
 

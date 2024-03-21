@@ -3,7 +3,6 @@
 # Teacher # attributes: id, name, birth_date, specialty, email
 # Student # attributes: id, name, birth_date, course_id, parent
 # Room    # attributes: id, name
-#
 # 1. For each class, create a class method that will generate 10 instances of course, subject, teacher and students, rooms
 # 2. Create a script that will show all the students & courses data
 # 3. allow the user to be able to pick the student and assign to a specific course
@@ -21,62 +20,65 @@ require_relative 'subject_students'
 require 'date'
 
 Course.generate_samples
-# Course.list
-#
 Subject.generate_samples
-# Subject.list
-#
-# Room.generate_samples
-# Room.list
-#
 Student.generate_samples
-# Student.list
-#
 Teacher.generate_samples
-# Teacher.list
-#
-# puts Time.now.strftime("%A %d/%m/%Y %H:%M")
-# #=> "14/09/2011 14:09"
 
-
+p SubjectStudents.list
 # Intro
 puts "Welcome to the Enrollment Portal. Press any key to continue."
 gets.chomp
 
-
 # Student Select
-Student.list
+puts "List of Students:"
+Student.list.each do |student|
+  puts "---------------------------"
+  puts "Student Name: #{student.name}"
+  puts "Student ID: #{student.id}"
+  puts "Course ID: #{student.course_id}"
+end
+
 puts "---------------------------"
 puts "Select student to enroll. Input student ID below."
+
 valid_ids = []
-Student.student_records.each do |student|
+Student.list.each do |student|
   valid_ids << student.id
 end
 student_input = gets.chomp
+
 if valid_ids.include?(student_input)
   puts "You are enrolling Student No.#{student_input}. Press any key to see subjects."
+
 else
-  puts "Please select a valid student ID"
+  puts "Error. Please select a valid student ID"
+  return
 end
 
 gets.chomp
 
 # Subject Select
-Subject.list
+puts "List of Subjects:"
+Subject.list.each do |subject|
+  puts "#{subject.id} - #{subject.name}"
+end
+
 puts "Select a subject to enroll in. Input subject ID below."
 
 valid_ids = []
-Subject.subject_records.each do |subject|
+Subject.list.each do |subject|
   valid_ids << subject.id
 end
 subject_input = gets.chomp
 if valid_ids.include?(subject_input)
   puts "You are enrolling Student No.#{student_input} in Subject No.#{subject_input}. Press any key to see teachers."
+  gets.chomp
 else
-  puts "Please select a valid subject ID"
+  puts "Error. Please select a valid subject ID"
+  return
 end
 
-gets.chomp
+
 
 # Teacher Select
 Teacher.list
@@ -90,7 +92,8 @@ teacher_input = gets.chomp
 if valid_ids.include?(teacher_input)
   puts "You've selected teacher ID #{teacher_input}. Press any key to see complete details of your enrollment."
 else
-  puts "Please select a valid teacher ID"
+  puts "Error. Please select a valid teacher ID"
+  return
 end
 
 # Review details
@@ -103,8 +106,8 @@ puts "Date: #{day}"
 
 # Save
 puts "Would you like to save? (y/n)"
-input = gets.chomp
-if input == 'y' || 'yes'
+save_input = gets.chomp
+if save_input == 'y' || save_input == 'yes'
   new_enrollment = SubjectStudents.new(subject_input, student_input, teacher_input, day)
   new_enrollment.save
   puts "Enrollment successful."
