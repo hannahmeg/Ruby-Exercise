@@ -45,10 +45,16 @@ valid_ids = []
 Student.list.each do |student|
   valid_ids << student.id
 end
-student_input = gets.chomp
+student_input_id = gets.chomp
+student_input_name = ''
 
-if valid_ids.include?(student_input)
-  puts "You are enrolling Student No.#{student_input}. Press any key to see subjects."
+Student.list.each do |student|
+  student_input_id == student.id
+  student_input_name = student.name
+end
+
+if valid_ids.include?(student_input_id)
+  puts "You are enrolling Student No.#{student_input_id}. Press any key to see subjects."
 
 else
   puts "Error. Please select a valid student ID"
@@ -69,9 +75,17 @@ valid_ids = []
 Subject.list.each do |subject|
   valid_ids << subject.id
 end
-subject_input = gets.chomp
-if valid_ids.include?(subject_input)
-  puts "You are enrolling Student No.#{student_input} in Subject No.#{subject_input}. Press any key to see teachers."
+subject_input_id = gets.chomp
+subject_input_name = ''
+
+Subject.list.each do |subject|
+  subject_input_id == subject.id
+  subject_input_name = subject.name
+end
+
+
+if valid_ids.include?(subject_input_id)
+  puts "You are enrolling Student No.#{student_input_id} in Subject No.#{subject_input_id}. Press any key to see teachers."
   gets.chomp
 else
   puts "Error. Please select a valid subject ID"
@@ -88,9 +102,17 @@ valid_ids = []
 Teacher.teacher_records.each do |teacher|
   valid_ids << teacher.id
 end
-teacher_input = gets.chomp
-if valid_ids.include?(teacher_input)
-  puts "You've selected teacher ID #{teacher_input}. Press any key to see complete details of your enrollment."
+teacher_input_id = gets.chomp
+teacher_input_name = ''
+
+Teacher.list.each do |teacher|
+  teacher_input_id == teacher.id
+  teacher_input_name = teacher.name
+end
+
+
+if valid_ids.include?(teacher_input_id)
+  puts "You've selected teacher ID #{teacher_input_id}. Press any key to see complete details of your enrollment."
 else
   puts "Error. Please select a valid teacher ID"
   return
@@ -99,16 +121,17 @@ end
 # Review details
 day = Date.today.strftime("%A %Y-%m-%d")
 puts "---------------------------"
-puts "Student ID: #{student_input}"
-puts "Subject: #{subject_input}"
-puts "Teacher: #{teacher_input}"
-puts "Date: #{day}"
+puts "Student ID: #{student_input_id} - #{student_input_name}"
+puts "Course ID: Course here"
+puts "Subject: #{subject_input_id} - #{subject_input_name}"
+puts "Teacher: #{teacher_input_id} - #{teacher_input_name}"
+puts "Enrollment Date: #{day}"
 
 # Save
 puts "Would you like to save? (y/n)"
 save_input = gets.chomp
 if save_input == 'y' || save_input == 'yes'
-  new_enrollment = SubjectStudents.new(subject_input, student_input, teacher_input, day)
+  new_enrollment = SubjectStudents.new(subject_input_id, student_input_id, teacher_input_id, day)
   new_enrollment.save
   puts "Enrollment successful."
 else
