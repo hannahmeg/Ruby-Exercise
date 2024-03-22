@@ -11,6 +11,10 @@ class Subject
     @@subject_records
   end
 
+  def save
+    @@subject_records << Subject.new(id, name)
+  end
+
   def self.generate_samples
     subjects = [
       { id: '001', name: 'Mathematics' },
