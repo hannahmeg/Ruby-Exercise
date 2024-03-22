@@ -7,8 +7,10 @@ require_relative 'subject_students'
 require 'date'
 Course.generate_samples
 Subject.generate_samples
+Room.generate_samples
 Student.generate_samples
 Teacher.generate_samples
+
 
 module MainMenu
   def self.run
@@ -337,7 +339,70 @@ module MainMenu
   end
 
   def self.fetch_room_tab
-    puts 'call room tab'
+    run = true
+    while run
+      puts '-------------------'
+      puts 'ROOMS TAB'
+      puts '(1) View Rooms List'
+      puts '(2) Add Rooms'
+      puts '(3) Go Back'
+      puts '-------------------'
+
+      puts 'Select one: '
+      option = gets.to_i
+
+      case option
+      when 1
+        puts 'LISTS OF ROOMS'
+        puts '-------------------'
+        Room.list.each do |room|
+          puts "#{room.id} - #{room.name}"
+        end
+        puts '-------------------'
+        puts "Press any key to go back."
+        gets.chomp
+
+      when 2
+        puts 'ADD A NEW ROOM'
+        puts '-------------------'
+        print 'Room ID: '
+        new_room_id = gets.chomp
+
+        Room.list.each do |room|
+          if new_room_id == room.id
+            puts 'Error: Room ID already taken.'
+            exit
+          end
+        end
+
+        print 'Room Name: '
+        new_room_name = gets.chomp
+
+        Room.list.each do |room|
+          if new_room_name == room.name
+            puts 'Error: Room Name already taken.'
+            exit
+          end
+        end
+
+        puts 'Would you like to save changes? (y/n)'
+        save_input = gets.chomp
+        if save_input == 'y' || save_input == 'yes'
+          new_room = Room.new(new_room_id, new_room_name)
+          new_room.save
+          puts "Room has been added successfully. Press any key to go back."
+          p Room.list
+        else
+          puts "Changes not saved. Press any key to go back."
+          gets.chomp
+        end
+
+      when 3
+        run = false
+      else
+        puts 'Invalid input'
+      end
+    end
   end
 
   def self.fetch_enroll_tab
