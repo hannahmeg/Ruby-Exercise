@@ -88,6 +88,7 @@ module MainMenu
           p Course.list
         else
           puts "Changes not saved. Press any key to go back."
+          gets.chomp
         end
       when 3
         run = false
