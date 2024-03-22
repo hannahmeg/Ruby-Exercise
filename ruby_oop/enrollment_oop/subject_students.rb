@@ -15,14 +15,6 @@ class SubjectStudents
   def save
     @@subject_students << SubjectStudents.new(subject_id, student_id, teacher_id, day)
   end
-
-  def self.generate_samples
-    subject_students1 = SubjectStudents.new('001', '011', '003', 'Thursday 2024-02-22')
-    subject_students2 = SubjectStudents.new('002', '012', '005', 'Friday 2024-03-22')
-    @@subject_students << subject_students1
-    @@subject_students << subject_students2
-  end
-
 end
 
 
