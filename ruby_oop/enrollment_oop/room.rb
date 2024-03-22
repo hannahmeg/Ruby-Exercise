@@ -8,10 +8,11 @@ class Room
   end
 
   def self.list
-    puts "List of Rooms:"
-    @@room_records.each do |room|
-      puts "#{room.id} - #{room.name}"
-    end
+    @@room_records
+  end
+
+  def save
+    @@room_records << Room.new(id, name)
   end
 
   def self.generate_samples
@@ -75,7 +76,6 @@ while i < rooms.size
     j += 1
   end
 end
-
 
 #
 # p ObjectSpace.each_object(Room).to_a
