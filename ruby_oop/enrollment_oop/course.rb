@@ -8,11 +8,8 @@ class Course
   end
 
   def self.list
-    puts "List of Courses:"
-    @@course_records.each do |course|
-      puts "#{course.id} - #{course.name}"
-    end
-    # p ObjectSpace.each_object(Course).to_a
+    # puts "List of Courses:"
+    @@course_records
   end
 
   def self.generate_samples
@@ -35,6 +32,7 @@ class Course
   end
 end
 
+
 # Generate 10 Instances of Class Course (with user input)
 # courses = []
 # input_count = 0
@@ -51,9 +49,3 @@ end
 #   Course.new(course[0], course[1])
 #   i += 1
 #   end
-# end
-
-
-
-
-
