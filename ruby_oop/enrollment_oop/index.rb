@@ -20,11 +20,11 @@ module MainMenu
       puts '-------------------'
       puts 'MAIN MENU'
       puts '(1) Courses Tab'
-      puts '(2) Subjects Tab' # View subjects list , Add subject , Go back
-      puts '(3) Students Tab' # View students list , Add student , Go back
-      puts '(4) Teachers Tab' # View teachers list , Add teacher , Go back
-      puts '(5) Rooms Tab' # View rooms list , Add room , Go back
-      puts '(6) Enrollment Tab' # Previous Enrollments , New Enrollment , Go back
+      puts '(2) Subjects Tab'
+      puts '(3) Students Tab'
+      puts '(4) Teachers Tab'
+      puts '(5) Rooms Tab'
+      puts '(6) Enrollment Tab'
       puts '(7) Exit'
       puts '-------------------'
 
