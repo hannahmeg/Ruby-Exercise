@@ -35,6 +35,13 @@ Student.list.each do |student|
   puts "---------------------------"
   puts "Student Name: #{student.name}"
   puts "Student ID: #{student.id}"
+  student_course = ''
+  Course.list.each do |course|
+    if student.course_id == course.id
+      student_course = course.name
+    end
+  end
+  puts "Course Name: #{student_course}"
   puts "Course ID: #{student.course_id}"
 end
 
@@ -121,8 +128,7 @@ end
 # Review details
 day = Date.today.strftime("%A %Y-%m-%d")
 puts "---------------------------"
-puts "Student ID: #{student_input_id} - #{student_input_name}"
-puts "Course ID: Course here"
+puts "Student: #{student_input_id} - #{student_input_name}"
 puts "Subject: #{subject_input_id} - #{subject_input_name}"
 puts "Teacher: #{teacher_input_id} - #{teacher_input_name}"
 puts "Enrollment Date: #{day}"
