@@ -10,19 +10,8 @@ class Teacher < Person
     @email = email
   end
 
-  def self.teacher_records
-    @@teacher_records
-  end
-
   def self.list
-    puts "List of Teachers:"
-    @@teacher_records.each do |teacher|
-      puts "---------------------------"
-      puts "Teacher Name: #{teacher.name}"
-      puts "Teacher ID: #{teacher.id}"
-      puts "Specialty: #{teacher.specialty}"
-      puts "Email: #{teacher.email}"
-    end
+    @@teacher_records
   end
 
   def self.generate_samples
