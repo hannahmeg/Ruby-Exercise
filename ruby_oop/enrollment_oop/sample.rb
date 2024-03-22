@@ -54,9 +54,9 @@ module MainMenu
     while run
       puts '-------------------'
       puts 'COURSES TAB'
-      puts '(1) View courses list'
-      puts '(2) Add course'
-      puts '(3) Go back'
+      puts '(1) View Courses List'
+      puts '(2) Add Course'
+      puts '(3) Go Back'
       puts '-------------------'
 
       puts 'Select one: '
@@ -121,9 +121,9 @@ module MainMenu
     while run
       puts '-------------------'
       puts 'SUBJECTS TAB'
-      puts '(1) View subjects list'
-      puts '(2) Add subject'
-      puts '(3) Go back'
+      puts '(1) View Subjects List'
+      puts '(2) Add Subject'
+      puts '(3) Go Back'
       puts '-------------------'
 
       puts 'Select one: '
@@ -188,9 +188,9 @@ module MainMenu
     while run
       puts '-------------------'
       puts 'STUDENTS TAB'
-      puts '(1) View students list'
-      puts '(2) Add student'
-      puts '(3) Go back'
+      puts '(1) View Students List'
+      puts '(2) Add Student'
+      puts '(3) Go Back'
       puts '-------------------'
 
       puts 'Select one: '
@@ -233,13 +233,6 @@ module MainMenu
         print 'Student Name: '
         new_student_name = gets.chomp
 
-        Subject.list.each do |student|
-          if new_student_name == student.name
-            puts 'Error: Student Name already taken.'
-            exit
-          end
-        end
-
         print 'Birthdate (MM/DD/YYY): '
         new_birth_date = gets.chomp
 
@@ -270,7 +263,77 @@ module MainMenu
   end
 
   def self.fetch_teacher_tab
-    puts 'call teacher tab'
+    run = true
+    while run
+      puts '-------------------'
+      puts 'TEACHERS TAB'
+      puts '(1) View Teachers List'
+      puts '(2) Add Teacher'
+      puts '(3) Go Back'
+      puts '-------------------'
+
+      puts 'Select one: '
+      option = gets.to_i
+
+      case option
+      when 1
+        puts 'LISTS OF TEACHERS'
+        puts '-------------------'
+        Teacher.list.each do |teacher|
+          puts "---------------------------"
+          puts "Teacher Name: #{teacher.name}"
+          puts "Teacher ID: #{teacher.id}"
+          puts "Specialty: #{teacher.specialty}"
+          puts "Email: #{teacher.email}"
+        end
+        puts '-------------------'
+        puts "Press any key to go back."
+        gets.chomp
+
+      when 2
+        puts 'ADD A NEW TEACHER'
+        puts '-------------------'
+        print 'Teacher ID: '
+        new_teacher_id = gets.chomp
+
+        Teacher.list.each do |teacher|
+          if new_teacher_id == teacher.id
+            puts 'Error: Teacher ID already taken.'
+            exit
+          end
+        end
+
+        print 'Teacher Name: '
+        new_teacher_name = gets.chomp
+
+        print 'Specialty:'
+        new_specialty = gets.chomp
+
+        print 'Birthdate (MM/DD/YYY):'
+        new_birth_date = gets.chomp
+
+        print 'Email address: '
+        new_email_address = gets.chomp
+
+
+        puts 'Would you like to save changes? (y/n)'
+        save_input = gets.chomp
+        if save_input == 'y' || save_input == 'yes'
+          new_teacher = Teacher.new(new_teacher_id, new_teacher_name, new_birth_date, new_specialty, new_email_address)
+          new_teacher.save
+          puts "Teacher has been added successfully. Press any key to go back."
+          p Teacher.list
+        else
+          puts "Changes not saved. Press any key to go back."
+          gets.chomp
+        end
+
+      when 3
+        run = false
+      else
+        puts 'Invalid input'
+      end
+    end
   end
 
   def self.fetch_room_tab
