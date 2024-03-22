@@ -14,6 +14,10 @@ class Teacher < Person
     @@teacher_records
   end
 
+  def save
+    @@teacher_records << Teacher.new(id, name, birth_date, specialty, email)
+  end
+
   def self.generate_samples
     teacher1 = Teacher.new('001', 'Caitlin', '07/25/1995', 'Programming', 'caitlin@gmail.com')
     teacher2 = Teacher.new('002', 'John', '11/10/1994', 'Mathematics', 'john@gmail.com')
