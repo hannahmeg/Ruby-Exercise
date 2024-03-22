@@ -69,3 +69,4 @@ end
 #
 #
 # p ObjectSpace.each_object(Student).to_a
+
