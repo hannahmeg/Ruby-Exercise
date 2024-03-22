@@ -10,14 +10,13 @@ Subject.generate_samples
 Room.generate_samples
 Student.generate_samples
 Teacher.generate_samples
-SubjectStudents.generate_samples
 
 module MainMenu
   def self.run
     run = true
     while run
       spacing
-      puts '-------------------'
+      puts '------------------------------'
       puts 'MAIN MENU'
       puts '(1) Courses Tab'
       puts '(2) Subjects Tab'
@@ -26,7 +25,7 @@ module MainMenu
       puts '(5) Rooms Tab'
       puts '(6) Enrollment Tab'
       puts '(7) Exit'
-      puts '-------------------'
+      puts '------------------------------'
 
       puts 'Select one:'
       option = gets.to_i
@@ -58,29 +57,29 @@ module MainMenu
     run = true
     while run
       spacing
-      puts '-------------------'
+      puts '------------------------------'
       puts 'COURSES TAB'
       puts '(1) View Courses List'
       puts '(2) Add Course'
       puts '(3) Go Back'
-      puts '-------------------'
+      puts '------------------------------'
 
       puts 'Select one: '
       option = gets.to_i
 
       case option
       when 1
-        puts '-------------------'
+        puts '------------------------------'
         puts 'LISTS OF COURSES'
         Course.list.each do |course|
           puts "#{course.id} - #{course.name}"
         end
-        puts '-------------------'
+        puts '------------------------------'
         puts "Press any key to go back."
         gets.chomp
 
       when 2
-        puts '-------------------'
+        puts '------------------------------'
         puts 'ADD A NEW COURSE'
         print 'Course ID: '
         new_course_id = gets.chomp
@@ -127,29 +126,29 @@ module MainMenu
     run = true
     while run
       spacing
-      puts '-------------------'
+      puts '------------------------------'
       puts 'SUBJECTS TAB'
       puts '(1) View Subjects List'
       puts '(2) Add Subject'
       puts '(3) Go Back'
-      puts '-------------------'
+      puts '------------------------------'
 
       puts 'Select one: '
       option = gets.to_i
 
       case option
       when 1
-        puts '-------------------'
+        puts '------------------------------'
         puts 'LISTS OF SUBJECTS'
         Subject.list.each do |subject|
           puts "#{subject.id} - #{subject.name}"
         end
-        puts '-------------------'
+        puts '------------------------------'
         puts "Press any key to go back."
         gets.chomp
 
       when 2
-        puts '-------------------'
+        puts '------------------------------'
         puts 'ADD A NEW SUBJECT'
         print 'Subject ID: '
         new_subject_id = gets.chomp
@@ -195,22 +194,23 @@ module MainMenu
     run = true
     while run
       spacing
-      puts '-------------------'
+      puts '------------------------------'
       puts 'STUDENTS TAB'
       puts '(1) View Students List'
       puts '(2) Add Student'
       puts '(3) Go Back'
-      puts '-------------------'
+      puts '------------------------------'
 
       puts 'Select one: '
       option = gets.to_i
 
       case option
       when 1
-        puts '-------------------'
+        spacing
+        puts '------------------------------'
         puts 'LISTS OF STUDENTS'
+        puts '------------------------------'
         Student.list.each do |student|
-          puts "---------------------------"
           puts "Student Name: #{student.name}"
           puts "Student ID: #{student.id}"
           student_course = ''
@@ -221,13 +221,14 @@ module MainMenu
           end
           puts "Course Name: #{student_course}"
           puts "Course ID: #{student.course_id}"
+          puts '------------------------------'
         end
-        puts '-------------------'
         puts "Press any key to go back."
         gets.chomp
 
       when 2
-        puts '-------------------'
+        spacing
+        puts '------------------------------'
         puts 'ADD A NEW STUDENT'
         print 'Student ID: '
         new_student_id = gets.chomp
@@ -275,33 +276,35 @@ module MainMenu
     run = true
     while run
       spacing
-      puts '-------------------'
+      puts '------------------------------'
       puts 'TEACHERS TAB'
       puts '(1) View Teachers List'
       puts '(2) Add Teacher'
       puts '(3) Go Back'
-      puts '-------------------'
+      puts '------------------------------'
 
       puts 'Select one: '
       option = gets.to_i
 
       case option
       when 1
-        puts '-------------------'
+        spacing
+        puts '------------------------------'
         puts 'LISTS OF TEACHERS'
+        puts '------------------------------'
         Teacher.list.each do |teacher|
-          puts "---------------------------"
           puts "Teacher Name: #{teacher.name}"
           puts "Teacher ID: #{teacher.id}"
           puts "Specialty: #{teacher.specialty}"
           puts "Email: #{teacher.email}"
+          puts '------------------------------'
         end
-        puts '-------------------'
         puts "Press any key to go back."
         gets.chomp
 
       when 2
-        puts '-------------------'
+        spacing
+        puts '------------------------------'
         puts 'ADD A NEW TEACHER'
         print 'Teacher ID: '
         new_teacher_id = gets.chomp
@@ -349,29 +352,31 @@ module MainMenu
     run = true
     while run
       spacing
-      puts '-------------------'
+      puts '------------------------------'
       puts 'ROOMS TAB'
       puts '(1) View Rooms List'
       puts '(2) Add Rooms'
       puts '(3) Go Back'
-      puts '-------------------'
+      puts '------------------------------'
 
       puts 'Select one: '
       option = gets.to_i
 
       case option
       when 1
-        puts '-------------------'
+        spacing
+        puts '------------------------------'
         puts 'LISTS OF ROOMS'
         Room.list.each do |room|
           puts "#{room.id} - #{room.name}"
         end
-        puts '-------------------'
+        puts '------------------------------'
         puts "Press any key to go back."
         gets.chomp
 
       when 2
-        puts '-------------------'
+        spacing
+        puts '------------------------------'
         puts 'ADD A NEW ROOM'
         print 'Room ID: '
         new_room_id = gets.chomp
@@ -417,19 +422,25 @@ module MainMenu
     run = true
     while run
       spacing
-      puts '-------------------'
+      puts '------------------------------'
       puts 'ENROLLMENT TAB'
       puts '(1) View Previous Enrollments'
       puts '(2) New Enrollment'
       puts '(3) Go Back'
-      puts '-------------------'
+      puts '------------------------------'
 
       puts 'Select one: '
       option = gets.to_i
 
       case option
       when 1
+        spacing
+        puts '------------------------------'
         puts 'LISTS OF PREVIOUS ENROLLMENTS'
+        puts '------------------------------'
+        if SubjectStudents.list.empty?
+          puts "(No recent enrollments.)"
+        end
 
         SubjectStudents.list.each do |subjectstudents|
           subject_id = subjectstudents.subject_id
@@ -465,28 +476,29 @@ module MainMenu
           #   end
           # end
 
-          puts '-------------------'
           puts "Student: #{student_id} #{student_name}"
           # puts "Course: "
           puts "Subject: #{subject_id} #{subject_name}"
           puts "Teacher: #{teacher_id} #{teacher_name}"
           puts "Enrollment Date: #{day}"
+          puts '------------------------------'
 
         end
-        puts '-------------------'
+        puts '------------------------------'
         puts "Press any key to go back."
         gets.chomp
 
       when 2
-        puts '-------------------'
+        spacing
+        puts '------------------------------'
         puts 'NEW ENROLLMENT'
         puts "Welcome to the Enrollment Portal. Press any key to continue."
         gets.chomp
 
         # Student Select
+        spacing
         puts "List of Students:"
         Student.list.each do |student|
-          puts "---------------------------"
           puts "Student Name: #{student.name}"
           puts "Student ID: #{student.id}"
           student_course = ''
@@ -587,6 +599,7 @@ module MainMenu
         # Review details
         day = Date.today.strftime("%A %Y-%m-%d")
         puts "---------------------------"
+        puts "REVIEW ENROLLMENT DETAILS:"
         puts "Student: #{student_input_id} - #{student_input_name}"
         puts "Subject: #{subject_input_id} - #{subject_input_name}"
         puts "Teacher: #{teacher_input_id} - #{teacher_input_name}"
@@ -598,7 +611,9 @@ module MainMenu
         if save_input == 'y' || save_input == 'yes'
           new_enrollment = SubjectStudents.new(subject_input_id, student_input_id, teacher_input_id, day)
           new_enrollment.save
-          puts "Enrollment successful."
+          puts "Enrollment successful. Press any key to go back."
+          gets.chomp
+
         else
           puts "Enrollment unsuccessful. Please try again."
         end
