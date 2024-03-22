@@ -12,6 +12,10 @@ class Course
     @@course_records
   end
 
+  def save
+    @@course_records << Course.new(id, name)
+  end
+
   def self.generate_samples
     courses = [
       { id: '001', name: 'Bachelor of Arts in Psychology' },
