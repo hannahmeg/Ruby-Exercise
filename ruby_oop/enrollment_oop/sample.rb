@@ -421,13 +421,52 @@ module MainMenu
       case option
       when 1
         puts 'LISTS OF PREVIOUS ENROLLMENTS'
+
+        SubjectStudents.list.each do |subjectstudents|
+          subject_id = subjectstudents.subject_id
+          student_id = subjectstudents.student_id
+          teacher_id = subjectstudents.teacher_id
+          # course_id = subjectstudents.course_id
+          day = subjectstudents.day
+          subject_name = ''
+          student_name = ''
+          teacher_name = ''
+
+          Subject.list.each do |subject|
+            if subject_id == subject.id
+              subject_name = subject.name
+            end
+          end
+
+          Student.list.each do |student|
+            if student_id == student.id
+              student_name = student.name
+            end
+          end
+
+          Teacher.list.each do |teacher|
+            if teacher_id == teacher.id
+              teacher_name = teacher.name
+            end
+          end
+
+          # Course.list.each do |course|
+          #   if course_id == course.id
+          #     course_name = course_name
+          #   end
+          # end
+
+          puts '-------------------'
+          puts "Student: #{student_id} #{student_name}"
+          # puts "Course: "
+          puts "Subject: #{subject_id} #{subject_name}"
+          puts "Teacher: #{teacher_id} #{teacher_name}"
+          puts "Enrollment Date: #{day}"
+
+        end
         puts '-------------------'
-        # SubjectStudents.list.each do |element|
-        #   puts "#{element.id} - #{element.name}"  (subject_id, student_id, teacher_id, day)
-        # end
-        # puts '-------------------'
-        # puts "Press any key to go back."
-        # gets.chomp
+        puts "Press any key to go back."
+        gets.chomp
 
       when 2
         puts 'NEW ENROLLMENT'
@@ -462,8 +501,9 @@ module MainMenu
         student_input_name = ''
 
         Student.list.each do |student|
-          student_input_id == student.id
-          student_input_name = student.name
+          if student_input_id == student.id
+            student_input_name = student.name
+          end
         end
 
         if valid_ids.include?(student_input_id)
@@ -492,8 +532,9 @@ module MainMenu
         subject_input_name = ''
 
         Subject.list.each do |subject|
-          subject_input_id == subject.id
-          subject_input_name = subject.name
+          if subject_input_id == subject.id
+            subject_input_name = subject.name
+          end
         end
 
         if valid_ids.include?(subject_input_id)
@@ -509,8 +550,8 @@ module MainMenu
           puts "---------------------------"
           puts "Teacher Name: #{teacher.name}"
           puts "Teacher ID: #{teacher.id}"
-          puts "Specialty: #{teacher.id}"
-          puts "Email: #{teacher.id}"
+          puts "Specialty: #{teacher.specialty}"
+          puts "Email: #{teacher.email}"
         end
         puts "Select a Teacher. Input teacher ID below."
 
@@ -522,8 +563,9 @@ module MainMenu
         teacher_input_name = ''
 
         Teacher.list.each do |teacher|
-          teacher_input_id == teacher.id
-          teacher_input_name = teacher.name
+          if teacher_input_id == teacher.id
+            teacher_input_name = teacher.name
+          end
         end
 
         if valid_ids.include?(teacher_input_id)
