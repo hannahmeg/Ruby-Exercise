@@ -14,6 +14,10 @@ class Student < Person
     @@student_records
   end
 
+  def save
+    @@student_records << Student.new(id, name, birth_date, course_id, parent)
+  end
+
   def self.generate_samples
     student1 = Student.new('001', 'Meg', '10/12/2000', '002', 'Mother')
     student2 = Student.new('002', 'Law', '05/30/2002', '008', 'Mother')
