@@ -10,7 +10,7 @@ Subject.generate_samples
 Room.generate_samples
 Student.generate_samples
 Teacher.generate_samples
-
+SubjectStudents.generate_samples
 
 module MainMenu
   def self.run
@@ -23,7 +23,7 @@ module MainMenu
       puts '(3) Students Tab' # View students list , Add student , Go back
       puts '(4) Teachers Tab' # View teachers list , Add teacher , Go back
       puts '(5) Rooms Tab' # View rooms list , Add room , Go back
-      puts '(6) Enrollment Tab' # Enroll , Go back
+      puts '(6) Enrollment Tab' # Previous Enrollments , New Enrollment , Go back
       puts '(7) Exit'
       puts '-------------------'
 
@@ -44,6 +44,7 @@ module MainMenu
       when 6
         fetch_enroll_tab
       when 7
+        puts 'Program Closed.'
         run = false
       else
         puts 'Invalid input'
@@ -317,7 +318,6 @@ module MainMenu
         print 'Email address: '
         new_email_address = gets.chomp
 
-
         puts 'Would you like to save changes? (y/n)'
         save_input = gets.chomp
         if save_input == 'y' || save_input == 'yes'
@@ -406,7 +406,161 @@ module MainMenu
   end
 
   def self.fetch_enroll_tab
-    'call enroll tab'
+    run = true
+    while run
+      puts '-------------------'
+      puts 'ENROLLMENT TAB'
+      puts '(1) View Previous Enrollments'
+      puts '(2) New Enrollment'
+      puts '(3) Go Back'
+      puts '-------------------'
+
+      puts 'Select one: '
+      option = gets.to_i
+
+      case option
+      when 1
+        puts 'LISTS OF PREVIOUS ENROLLMENTS'
+        puts '-------------------'
+        # SubjectStudents.list.each do |element|
+        #   puts "#{element.id} - #{element.name}"  (subject_id, student_id, teacher_id, day)
+        # end
+        # puts '-------------------'
+        # puts "Press any key to go back."
+        # gets.chomp
+
+      when 2
+        puts 'NEW ENROLLMENT'
+        puts '-------------------'
+        puts "Welcome to the Enrollment Portal. Press any key to continue."
+        gets.chomp
+
+        # Student Select
+        puts "List of Students:"
+        Student.list.each do |student|
+          puts "---------------------------"
+          puts "Student Name: #{student.name}"
+          puts "Student ID: #{student.id}"
+          student_course = ''
+          Course.list.each do |course|
+            if student.course_id == course.id
+              student_course = course.name
+            end
+          end
+          puts "Course Name: #{student_course}"
+          puts "Course ID: #{student.course_id}"
+        end
+
+        puts "---------------------------"
+        puts "Select student to enroll. Input student ID below."
+
+        valid_ids = []
+        Student.list.each do |student|
+          valid_ids << student.id
+        end
+        student_input_id = gets.chomp
+        student_input_name = ''
+
+        Student.list.each do |student|
+          student_input_id == student.id
+          student_input_name = student.name
+        end
+
+        if valid_ids.include?(student_input_id)
+          puts "You are enrolling Student No.#{student_input_id}. Press any key to see subjects."
+
+        else
+          puts "Error. Please select a valid student ID"
+          return
+        end
+        gets.chomp
+
+        # Subject Select
+        puts "List of Subjects:"
+        Subject.list.each do |subject|
+          puts "#{subject.id} - #{subject.name}"
+        end
+
+        puts "---------------------------"
+        puts "Select a subject to enroll in. Input subject ID below."
+
+        valid_ids = []
+        Subject.list.each do |subject|
+          valid_ids << subject.id
+        end
+        subject_input_id = gets.chomp
+        subject_input_name = ''
+
+        Subject.list.each do |subject|
+          subject_input_id == subject.id
+          subject_input_name = subject.name
+        end
+
+        if valid_ids.include?(subject_input_id)
+          puts "You are enrolling Student No.#{student_input_id} in Subject No.#{subject_input_id}. Press any key to see teachers."
+          gets.chomp
+        else
+          puts "Error. Please select a valid subject ID"
+          return
+        end
+
+        # Teacher Select
+        Teacher.list.each do |teacher|
+          puts "---------------------------"
+          puts "Teacher Name: #{teacher.name}"
+          puts "Teacher ID: #{teacher.id}"
+          puts "Specialty: #{teacher.id}"
+          puts "Email: #{teacher.id}"
+        end
+        puts "Select a Teacher. Input teacher ID below."
+
+        valid_ids = []
+        Teacher.list.each do |teacher|
+          valid_ids << teacher.id
+        end
+        teacher_input_id = gets.chomp
+        teacher_input_name = ''
+
+        Teacher.list.each do |teacher|
+          teacher_input_id == teacher.id
+          teacher_input_name = teacher.name
+        end
+
+        if valid_ids.include?(teacher_input_id)
+          puts "You've selected teacher ID #{teacher_input_id}. Press any key to see complete details of your enrollment."
+        else
+          puts "Error. Please select a valid teacher ID"
+          return
+        end
+
+        # Review details
+        day = Date.today.strftime("%A %Y-%m-%d")
+        puts "---------------------------"
+        puts "Student: #{student_input_id} - #{student_input_name}"
+        puts "Subject: #{subject_input_id} - #{subject_input_name}"
+        puts "Teacher: #{teacher_input_id} - #{teacher_input_name}"
+        puts "Enrollment Date: #{day}"
+
+        # Save
+        puts "Would you like to save? (y/n)"
+        save_input = gets.chomp
+        if save_input == 'y' || save_input == 'yes'
+          new_enrollment = SubjectStudents.new(subject_input_id, student_input_id, teacher_input_id, day)
+          new_enrollment.save
+          puts "Enrollment successful."
+        else
+          puts "Enrollment unsuccessful. Please try again."
+        end
+
+        # Check data
+        p SubjectStudents.list
+
+      when 3
+        run = false
+      else
+        puts 'Invalid input'
+      end
+    end
   end
 end
 
