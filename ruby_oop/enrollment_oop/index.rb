@@ -18,14 +18,11 @@ require_relative 'student'
 require_relative 'teacher'
 require_relative 'subject_students'
 require 'date'
-
 Course.generate_samples
 Subject.generate_samples
 Student.generate_samples
 Teacher.generate_samples
 
-p SubjectStudents.list
-# Intro
 puts "Welcome to the Enrollment Portal. Press any key to continue."
 gets.chomp
 
@@ -67,7 +64,6 @@ else
   puts "Error. Please select a valid student ID"
   return
 end
-
 gets.chomp
 
 # Subject Select
@@ -76,6 +72,7 @@ Subject.list.each do |subject|
   puts "#{subject.id} - #{subject.name}"
 end
 
+puts "---------------------------"
 puts "Select a subject to enroll in. Input subject ID below."
 
 valid_ids = []
@@ -90,7 +87,6 @@ Subject.list.each do |subject|
   subject_input_name = subject.name
 end
 
-
 if valid_ids.include?(subject_input_id)
   puts "You are enrolling Student No.#{student_input_id} in Subject No.#{subject_input_id}. Press any key to see teachers."
   gets.chomp
@@ -99,14 +95,18 @@ else
   return
 end
 
-
-
 # Teacher Select
-Teacher.list
+Teacher.list.each do |teacher|
+  puts "---------------------------"
+  puts "Teacher Name: #{teacher.name}"
+  puts "Teacher ID: #{teacher.id}"
+  puts "Specialty: #{teacher.id}"
+  puts "Email: #{teacher.id}"
+end
 puts "Select a Teacher. Input teacher ID below."
 
 valid_ids = []
-Teacher.teacher_records.each do |teacher|
+Teacher.list.each do |teacher|
   valid_ids << teacher.id
 end
 teacher_input_id = gets.chomp
@@ -116,7 +116,6 @@ Teacher.list.each do |teacher|
   teacher_input_id == teacher.id
   teacher_input_name = teacher.name
 end
-
 
 if valid_ids.include?(teacher_input_id)
   puts "You've selected teacher ID #{teacher_input_id}. Press any key to see complete details of your enrollment."
@@ -147,11 +146,6 @@ end
 # Check data
 p SubjectStudents.list
 
-
-
-
-
-
 # SubjectStudents.list.each do |subject_students|
 #   puts "---------------------------"
 #   puts "Student Name: #{subject_students.student_id}"
@@ -160,8 +154,6 @@ p SubjectStudents.list
 #   puts "Teacher: #{subject_students.teacher_id}"
 #   puts "Date enrolled: #{subject_students.day}"
 # end
-
-
 
 # p Student.student_records
 
