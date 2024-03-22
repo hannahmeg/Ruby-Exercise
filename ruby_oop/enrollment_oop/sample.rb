@@ -59,16 +59,36 @@ module MainMenu
       puts '(3) Go back'
       puts '-------------------'
 
-      puts 'Select one:'
+      puts 'Select one: '
       option = gets.to_i
 
       case option
       when 1
+        puts 'LISTS OF COURSES'
+        puts '-------------------'
         Course.list.each do |course|
           puts "#{course.id} - #{course.name}"
-          end
+        end
+        puts '-------------------'
+        puts "Press any key to go back."
+        gets.chomp
       when 2
-
+        puts 'ADD A NEW COURSE'
+        puts '-------------------'
+        print 'Course ID: '
+        new_course_id = gets.chomp #check if already taken
+        print 'Course Name: '
+        new_course_name = gets.chomp
+        puts 'Would you like to save changes? (y/n)'
+        save_input = gets.chomp
+        if save_input == 'y' || save_input == 'yes'
+          new_course = Course.new(new_course_id, new_course_name)
+          new_course.save
+          puts "Course has been added successfully. Press any key to go back."
+          p Course.list
+        else
+          puts "Changes not saved. Press any key to go back."
+        end
       when 3
         run = false
       else
@@ -100,5 +120,4 @@ end
 
 MainMenu.run
 
-#
-# puts "Welcome to the Enrollment Portal. Press any key to continue."
+
